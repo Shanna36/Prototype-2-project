@@ -18,8 +18,14 @@ public class DetectCollisions : MonoBehaviour
     
     private void OnTriggerEnter(Collider other)
     {
-        //destroy both food (gameObject) and animal (other.gameObject) when a collision happens between the two
-        Destroy(gameObject);
-        Destroy(other.gameObject);
+        if (other.CompareTag("Player")){
+            Debug.Log("Game Over!");
+            Destroy(gameObject);
+        }
+        else {
+            Destroy(gameObject);
+            Destroy(other.gameObject);
+        }
+      
     }
 }
