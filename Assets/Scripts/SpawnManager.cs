@@ -22,13 +22,13 @@ public class SpawnManager : MonoBehaviour
     void Start()
     {
   
-    // Invoke the SpawnRandomAnimal method at the specified interval
+    // maybe there is a more elegant way to do this?
     InvokeRepeating("SpawnRandomAnimal", startDelay, spawnInterval);
 
-    // Invoke the SpawnLeftAnimal method at a different interval
+
     InvokeRepeating("SpawnLeftAnimal", startDelay, spawnInterval * 2); 
 
-    // Invoke the SpawnRightAnimal method at yet another interval
+
     InvokeRepeating("SpawnRightAnimal", startDelay, spawnInterval * 3); 
 
 
@@ -41,7 +41,7 @@ public class SpawnManager : MonoBehaviour
         
         
     }
-     void SpawnRandomAnimal(){ //this function we wrote to make random animals from our array appear at random points along x axis
+     void SpawnRandomAnimal(){ 
             
             int animalIndex = Random.Range(0, animalPrefabs.Length);
             Vector3 spawnPos = new Vector3(Random.Range(-spawnRangeX, spawnRangeX),0,spawnPosZ);

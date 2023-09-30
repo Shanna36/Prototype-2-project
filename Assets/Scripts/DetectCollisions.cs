@@ -4,28 +4,35 @@ using UnityEngine;
 
 public class DetectCollisions : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private GameManager gameManager;
+
+    void Awake()
     {
-        
+        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+        if (gameManager == null)
+        {
+            Debug.LogError("GameManager not found!"); //trying to solve a null object error in my scene
+        }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-    
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player")){
-            Debug.Log("Game Over!");
+        if (other.CompareTag("Player"))
+        {
+            gameManager.AddLives(-1);
             Destroy(gameObject);
         }
-        else {
+        else if (other.CompareTag("Animal"))
+        {
+            gameManager.AddScore(5);
             Destroy(gameObject);
             Destroy(other.gameObject);
         }
-      
+        else if (other.CompareTag("Food")) //aware that this is duplication, but trying to solve null error
+        {
+            gameManager.AddScore(5);
+            Destroy(gameObject);
+            Destroy(other.gameObject);
+        }
     }
 }
