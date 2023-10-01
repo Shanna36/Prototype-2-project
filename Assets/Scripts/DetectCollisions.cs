@@ -7,13 +7,17 @@ public class DetectCollisions : MonoBehaviour
     private GameManager gameManager;
 
     void Awake()
-    {
-        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+    {//intermittently losing Game Manager script during gameplay, trying to resolve by moving call to Game Manager to awake instead of start
         if (gameManager == null)
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>(); 
         {
             Debug.LogError("GameManager not found!"); //trying to solve a null object error in my scene
         }
     }
+     void Start()
+     {
+       
+     }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -28,11 +32,6 @@ public class DetectCollisions : MonoBehaviour
             Destroy(gameObject);
             Destroy(other.gameObject);
         }
-        else if (other.CompareTag("Food")) //aware that this is duplication, but trying to solve null error
-        {
-            gameManager.AddScore(5);
-            Destroy(gameObject);
-            Destroy(other.gameObject);
-        }
+       
     }
 }
