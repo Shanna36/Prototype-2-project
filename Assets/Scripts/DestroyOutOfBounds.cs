@@ -9,30 +9,32 @@ public class DestroyOutOfBounds : MonoBehaviour
 
     private float sideBound = 30f;
 
+    private GameManager gameManager;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        gameManager = GameObject.Find("GameManager").GetComponent<gameManager>();
     }
 
     // Update is called once per frame
     void Update()
-    { // use logic that if the gam object goes above the top bound or below the lower bound, to destory it
+    { // use logic that if the game object goes above the top bound or below the lower bound, to destory it
         if (transform.position.z > topBound)
         {
             Destroy (gameObject);
         }
         else if (transform.position.z < lowerBound)
         {
-            Debug.Log("Game Over!"); //if an animal makes it to the bottom bound, it is game over!
+            gameManager.AddLives(-1); //says add lives but really you are subtracting
             Destroy (gameObject);
         }
         else if (transform.position.x > sideBound){
-            Debug.Log("GameOver!");
+            gameManager.AddLives(-1);
             Destroy(gameObject);
         }
         else if (transform.position.x < -sideBound){
-             Debug.Log("GameOver!");
+            gameManager.AddLives(-1);
             Destroy(gameObject);
         }
     }

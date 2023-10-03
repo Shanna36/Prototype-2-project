@@ -474,7 +474,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hungerSlider: {fileID: 3585341564157949447}
-  amountToBeFed: 1
+  amountToFeed: 1
 --- !u!1 &6605529479574336344
 GameObject:
   m_ObjectHideFlags: 0
