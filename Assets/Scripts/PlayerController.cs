@@ -51,7 +51,7 @@ public class PlayerController : MonoBehaviour
         
 
         //launch a projectile from the player when they press the space bar
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKey(KeyCode.Space))
         {
             //spawn projectile food from the player's position
             Instantiate(projectilePrefab, projectileSpawnPoint.position, projectilePrefab.transform.rotation);
