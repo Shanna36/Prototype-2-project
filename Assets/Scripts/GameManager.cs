@@ -32,8 +32,6 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("Game Over");
             lives = 0;
-
-            
         }
 
         Debug.Log("Lives = " + lives);
